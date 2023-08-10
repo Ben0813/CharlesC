@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
 import NavBar from './components/NavBar';
-function App() {
-  const [count, setCount] = useState(0)
+import Footer from './components/Footer';
+import HomePage from './components/views/HomePage';
 
+function App() {
   return (
-    <div className="App">
+    <div className="App flex flex-col min-h-screen">
       <NavBar />
-</div>
-  )
+      <div className="flex-grow">
+        <HomePage />
+      </div>
+      <Footer />
+    </div>
+  );
 }
 
-
-export default App
+export default App;
