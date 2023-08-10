@@ -2,7 +2,19 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gray: {
+          700: "#4a4a4a",
+          800: "#393939",
+          900: "#2a2a2a",
+        },
+      },
+      fontFamily: {
+        display: ["Playfair Display", "serif"],
+      },
+    },
   },
+  variants: {},
   plugins: [],
 };
