@@ -19,7 +19,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className={`bg-gray-700 text-white px-8 py-4 fixed top-0 left-0 right-0 z-10 font-display ${isMobileMenuOpen ? "bg-opacity-80" : "bg-opacity-100"}`}>
+    <header className={`bg-gray-700 text-white px-8 py-5 fixed top-0 left-0 right-0 z-10 font-display ${isMobileMenuOpen ? "bg-opacity-80" : "bg-opacity-100"}`}>
       <div className="container mx-auto flex items-center justify-between">
         
         {/* Navigation links for desktop */}
@@ -37,8 +37,8 @@ const NavBar = () => {
               onClick={() => handleNavigation("/gallery")}
             >
               Galerie
-            </Link>
-            <img src="src/assets/logo.png" alt="Logo" className="h-12 mx-2" />
+              </Link>
+            <img src="src/assets/logo.png" alt="Logo" className="h-20 mx-2" />
             <Link
               to="/services"
               className={`hover:text-gray-400 font-display ${currentPath === "/services" ? "underline" : ""}`}
@@ -57,7 +57,7 @@ const NavBar = () => {
 
         {/* Mobile layout */}
         <div className="md:hidden flex w-full justify-between items-center">
-          <img src="src/assets/logo.png" alt="Logo" className="h-12 ml-4" />
+          <img src="src/assets/logo.png" alt="Logo" className="h-16 ml-4" />
           <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? (
               <svg width="24" height="24" fill="none">

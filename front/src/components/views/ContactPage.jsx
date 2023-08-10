@@ -17,7 +17,7 @@ const ContactPage = () => {
   }, [state]);
 
   return (
-    <div className="bg-gray-200 min-h-screen flex flex-col justify-center items-center py-12">
+    <div className="bg-gray-200 min-h-screen flex flex-col justify-center items-center py-12 pt-28">
         <div className="w-full max-w-lg bg-white p-8 rounded shadow-md">
             <h1 className="font-display text-3xl mb-8 text-center">
                 Contactez-moi
