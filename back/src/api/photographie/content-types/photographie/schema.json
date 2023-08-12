@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "images",
+  "collectionName": "photographies",
   "info": {
-    "singularName": "image",
-    "pluralName": "images",
-    "displayName": "Image",
-    "description": ""
+    "singularName": "photographie",
+    "pluralName": "photographies",
+    "displayName": "Photographie"
   },
   "options": {
     "draftAndPublish": true
@@ -15,21 +14,20 @@
     "Titre": {
       "type": "string"
     },
-    "Description": {
-      "type": "richtext"
-    },
-    "Image": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
+    "Photo": {
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "type": "media",
+      "multiple": true
     },
-    "Categories": {
+    "Url": {
+      "type": "string"
+    },
+    "Categorie": {
       "type": "enumeration",
       "enum": [
         "Mariage",
