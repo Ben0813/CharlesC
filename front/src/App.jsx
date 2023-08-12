@@ -7,6 +7,8 @@ import HomePage from './components/views/HomePage';
 import ServicesPage from './components/views/ServicesPage';
 import ContactPage from './components/views/ContactPage';
 import GalleryPage from './components/views/GalleryPage';
+import PrivacyPolicyPage from './components/views/PrivacyPolicyPage';
+import TermsOfSalePage from './components/views/TermsOfSalePage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage /> } />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/Terms-of-sale" element={<TermsOfSalePage />} />
         </Routes>
       </div>
       <Footer />
