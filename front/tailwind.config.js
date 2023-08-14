@@ -16,5 +16,18 @@ export default {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        "@font-face": {
+          fontFamily: "Playfair Display",
+          fontWeight: "400",
+          fontStyle: "normal",
+          src: `
+            url('/src/assets/fonts/PlayfairDisplay-Regular.ttf') format('truetype')
+          `,
+        },
+      });
+    },
+  ],
 };

@@ -9,6 +9,7 @@ import ContactPage from './components/views/ContactPage';
 import GalleryPage from './components/views/GalleryPage';
 import PrivacyPolicyPage from './components/views/PrivacyPolicyPage';
 import TermsOfSalePage from './components/views/TermsOfSalePage';
+import NotFoundPage from './components/views/NotFoundPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/Terms-of-sale" element={<TermsOfSalePage />} />
+          <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
       </div>
       <Footer />
