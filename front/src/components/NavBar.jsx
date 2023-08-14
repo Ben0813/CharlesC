@@ -20,7 +20,7 @@ const NavBar = () => {
 
   return (
     <header className={`bg-gray-700 text-white px-8 py-5 fixed top-0 left-0 right-0 z-10 font-display z-50 ${isMobileMenuOpen ? "bg-opacity-80" : "bg-opacity-100"}`}>
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         
         {/* Navigation links for desktop */}
         <nav className="hidden md:flex space-x-4 w-full justify-between items-center">
@@ -37,7 +37,7 @@ const NavBar = () => {
               onClick={() => handleNavigation("/gallery")}
             >
               Galerie
-              </Link>
+            </Link>
             <img src="src/assets/logo.png" alt="Logo" className="h-20 mx-2" />
             <Link
               to="/services"
@@ -54,21 +54,28 @@ const NavBar = () => {
               Contact
             </Link>
         </nav>
-
+        {/* Icônes Facebook et Instagram */}
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hidden md:flex ml-2 hover:text-gray-400">
+              <img src="src/assets/instagram.svg" alt="Instagram" className="h-4 w-4" />
+            </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hidden md:flex ml-1 hover:text-gray-400">
+              <img src="src/assets/facebook.svg" alt="Facebook" className="h-4 w-4" />
+        </a>
+  
         {/* Mobile layout */}
         <div className="md:hidden flex w-full justify-between items-center">
-          <img src="src/assets/logo.png" alt="Logo" className="h-16 ml-4" />
-          <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? (
-              <svg width="24" height="24" fill="none">
-                <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-              </svg>
-            ) : (
-              <svg width="24" height="24" fill="none">
-                <path d="M4 6h16M4 12h16m-16 6h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-              </svg>
-            )}
-          </button>
+            <img src="src/assets/logo.png" alt="Logo" className="h-16 ml-4" />
+            <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? (
+                <svg width="24" height="24" fill="currentColor">
+                  <path d="M6 18L18 6M6 6l12 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                </svg>
+              ) : (
+                <svg width="24" height="24" fill="currentColor">
+                  <path d="M4 6h16M4 12h16m-16 6h16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                </svg>
+              )}
+            </button>
         </div>
       </div>
       
@@ -103,6 +110,13 @@ const NavBar = () => {
             >
               Contact
             </Link>
+            {/* Icônes Facebook et Instagram pour mobile */}
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="mx-2 hover:text-gray-400">
+              <img src="src/assets/instagram.svg" alt="Instagram" className="h-3 w-3" />
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="mx-2 hover:text-gray-400">
+              <img src="src/assets/facebook.svg" alt="Facebook" className="h-3 w-3" />
+            </a>
           </ul>
         </nav>
       )}
@@ -111,4 +125,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
