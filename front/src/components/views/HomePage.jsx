@@ -1,6 +1,10 @@
 import React from 'react';
 
 const HomePage = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+    
     return (
         <div 
             className="flex h-screen bg-center bg-cover items-center justify-center" 

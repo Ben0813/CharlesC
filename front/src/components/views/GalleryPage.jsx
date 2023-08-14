@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function GaleriePage() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [photos, setPhotos] = useState([]);
   const [allPhotos, setAllPhotos] = useState([]);
   const [filter, setFilter] = useState('');
@@ -18,7 +22,7 @@ function GaleriePage() {
   }, []);
 
   useEffect(() => {
-    if (filter === 'Sélection' || filter === '') {
+    if (filter === 'Toutes' || filter === '') {
       const shuffledPhotos = shuffleArray([...allPhotos]).slice(0, 24);
       setPhotos(shuffledPhotos);
     } else {
@@ -41,9 +45,9 @@ function GaleriePage() {
   return (
     <div className="bg-gray-200 min-h-screen pt-28">
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-display mb-4 text-center text-gray-800">Galerie</h1>
+        <h1 className="text-3xl font-display mb-4 text-center text-gray-800">Découvrez mes dernières photos</h1>
         <div className="mb-4 flex flex-wrap justify-center">
-          {['Sélection', 'Mariage', 'Grossesse', 'Bebe', 'Famille', 'Bapteme', 'Couple', 'Portrait'].map(cat => (
+          {['Toutes', 'Mariage', 'Grossesse', 'Bebe', 'Famille', 'Bapteme', 'Couple', 'Portrait'].map(cat => (
             <button
               key={cat}
               className={`mx-2 my-1 p-2 rounded ${filter === cat ? 'bg-gray-200 text-gray-900' : 'bg-gray-700 text-white'}`}

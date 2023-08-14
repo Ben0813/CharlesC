@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 
 const ContactPage = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+    
+
   const [state, handleSubmit] = useForm("mwkdlood");
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
