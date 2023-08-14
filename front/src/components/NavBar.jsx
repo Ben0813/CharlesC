@@ -19,7 +19,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className={`bg-gray-700 text-white px-8 py-5 fixed top-0 left-0 right-0 z-10 font-display ${isMobileMenuOpen ? "bg-opacity-80" : "bg-opacity-100"}`}>
+    <header className={`bg-gray-700 text-white px-8 py-5 fixed top-0 left-0 right-0 z-10 font-display z-50 ${isMobileMenuOpen ? "bg-opacity-80" : "bg-opacity-100"}`}>
       <div className="container mx-auto flex items-center justify-between">
         
         {/* Navigation links for desktop */}
