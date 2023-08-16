@@ -13,7 +13,10 @@ const ServicesPage = () => {
     axios
       .get(`${import.meta.env.VITE_REACT_APP_API_URL}/services`)
       .then((response) => {
-        const serviceData = response.data.data.map((item) => item.attributes);
+        const serviceData = response.data.data.map((item) => ({
+          ...item.attributes,
+          id: item.id,
+        }));
         setServices(serviceData);
       })
       .catch((error) => {
