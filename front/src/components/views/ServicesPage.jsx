@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import DOMPurify from "dompurify";
 
 // Define the ServicesPage component
 const ServicesPage = () => {
@@ -52,21 +53,25 @@ const ServicesPage = () => {
         <div className="flex justify-center">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Map over the services state and render each service */}
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className="p-6 bg-white bg-opacity-80 border rounded-md shadow-md hover:shadow-xl transition-shadow duration-300 max-w-md w-full"
-              >
-                <h2 className="font-display text-2xl mb-2 text-gray-900">
-                  {service.title.rendered}
-                </h2>
-                <p className="text-gray-600 mb-4">{service.tags}</p>
+            {services.map((service) => {
+              // Sanitize the content before rendering for prevent XSS attacks
+              const cleanHTML = DOMPurify.sanitize(service.content.rendered);
+              return (
                 <div
-                  className="text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: service.content.rendered }}
-                ></div>
-              </div>
-            ))}
+                  key={service.id}
+                  className="p-6 bg-white bg-opacity-80 border rounded-md shadow-md hover:shadow-xl transition-shadow duration-300 max-w-md w-full"
+                >
+                  <h2 className="font-display text-2xl mb-2 text-gray-900">
+                    {service.title.rendered}
+                  </h2>
+                  <p className="text-gray-600 mb-4">{service.tags}</p>
+                  <div
+                    className="text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: cleanHTML }}
+                  ></div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -74,5 +79,4 @@ const ServicesPage = () => {
   );
 };
 
-// Export the ServicesPage component
 export default ServicesPage;
