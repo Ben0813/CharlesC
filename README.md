@@ -44,7 +44,7 @@ npm install
 
 #### Back-end
 
-Installer un WordPress que vous allez utiliser comme Headless CMS.
+Installez un WordPress que vous allez utiliser comme Headless CMS.
 
 ### Configurer WordPress
 
