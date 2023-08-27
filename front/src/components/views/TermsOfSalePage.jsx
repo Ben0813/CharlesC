@@ -27,7 +27,7 @@ const TermsOfSalePage = () => {
           </h2>
           <p className="text-gray-700 mb-4">
             Les photos imprimées sont couvertes par une garantie de qualité de 6
-            mois. Si un défaut est détecté pendant cette période, nous le
+            mois. Si un défaut est détecté pendant cette période, nous les
             remplaçons gratuitement.
           </p>
 
@@ -54,12 +54,13 @@ const TermsOfSalePage = () => {
             Réclamations
           </h2>
           <p className="text-gray-700">
-            Toute réclamation doit être adressée par écrit dans un délai de 15
-            jours après la livraison. Passé ce délai, aucune réclamation ne sera
-            acceptée.
+            Pour toute réclamation, veuillez nous contacter via notre formulaire
+            de contact ou à l'adresse e-mail suivante : info@charlescantin.com
+            dans un délai de 15 jours après la livraison. Passé ce délai, aucune
+            réclamation ne sera acceptée.
           </p>
 
-          <p className="text-gray-700 mt-4">Mise à jour le 12 aout 2023</p>
+          <p className="text-gray-700 mt-4">Mise à jour le 27 aout 2023</p>
         </div>
       </div>
     </div>
