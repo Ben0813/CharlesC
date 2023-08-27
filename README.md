@@ -6,9 +6,9 @@
 - [Étapes d'Installation](#étapes-dinstallation)
   - [Cloner le dépôt](#cloner-le-dépôt)
   - [Installer les dépendances](#installer-les-dépendances)
-  - [Configuration de WordPress](#configuration-de-wordpress)
+  - [Configurer WordPress](#configurer-wordpress)
+  - [Configurer le Front-end](#configurer-le-Front-end)
   - [Démarrer l'application](#démarrer-lapplication)
-- [Points à considérer](#points-à-considérer)
 
 ## Prérequis
 
@@ -46,13 +46,13 @@ npm install
 
 Installer un WordPress que vous allez utiliser comme Headless CMS.
 
-### Configuration de WordPress
+### Configurer WordPress
 
 1. Installez le plugin WP Login-Limit en placant le fichier corrspondant dans ../wp-content/plugins/
 2. Installez le plugin Advanced Custom Fields via le tableau de bord WordPress.
 3. Activez les plugins et configurez ACF pour ajouter catégories dans les Taxonimies, ce qui vous permettra d'ajouter des catégories aux médias.
 
-### Configuration de Front-end
+### Configurer le Front-end
 
 Ajoutez le dossier .env à la racine du projet et ajouter en valeur l'URL de votre API WordPress à votre variable d'environement "VITE_REACT_APP_API_URL="
 
@@ -63,11 +63,15 @@ Ajoutez le dossier .env à la racine du projet et ajouter en valeur l'URL de vot
 Pour démarrer l'application front-end, exécutez :
 
 ```bash
-npm run ndev
+npm run dev
 ```
 
 #### Back-end
 
 Démarrez votre serveur web et assurez-vous que WordPress est accessible.
+
+##
+
+=> Vous devriez maintenant être en mesure d'exécuter l'application sur votre machine locale. Si vous rencontrez des problèmes, n'hésitez pas à me contacter. <=
 
 ---
