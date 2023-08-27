@@ -2,21 +2,48 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const GaleriePage = () => {
-  React.useEffect(() => {
+  // Scroll to top of page on component mount
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // State variables for photos, all photos and filter
   const [photos, setPhotos] = useState([]);
   const [allPhotos, setAllPhotos] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("Toutes");
 
-  // Fetches all photos from the API and sets them to the `allPhotos` state
+  // Fetch photos from API on component mount
   useEffect(() => {
+    const WP_API_URL = `${
+      import.meta.env.VITE_REACT_APP_API_URL
+    }/wp-json/wp/v2/media?_embed&per_page=100`;
+
     axios
-      .get(`${import.meta.env.VITE_REACT_APP_API_URL}/photographies`)
+      .get(WP_API_URL)
       .then((response) => {
-        const photoData = response.data.data.map((item) => item.attributes);
-        setAllPhotos(photoData);
+        const photoData = response.data.map((item) => {
+          let categorySlug = ""; // default value
+
+          // Check if the required data exists before accessing it
+          if (
+            item._embedded &&
+            item._embedded["wp:term"] &&
+            item._embedded["wp:term"][0] &&
+            item._embedded["wp:term"][0][0] &&
+            item._embedded["wp:term"][0][0].slug
+          ) {
+            categorySlug = item._embedded["wp:term"][0][0].slug;
+          }
+
+          // Return photo data with URL, title and category
+          return {
+            Url: item.source_url,
+            Titre: item.title.rendered,
+            Category: categorySlug,
+          };
+        });
+        // Shuffle the array of photos and set it to allPhotos state
+        setAllPhotos(shuffleArray(photoData));
       })
       .catch((error) => {
         console.error(
@@ -26,20 +53,18 @@ const GaleriePage = () => {
       });
   }, []);
 
-  /**
-   * Filters the photos based on the selected category and sets them to the `photos` state
-   * If no category is selected, a random selection of 24 photos is displayed
-   */
+  // Update photos state when filter or allPhotos state changes
   useEffect(() => {
-    if (filter === "Toutes" || filter === "") {
-      const shuffledPhotos = shuffleArray([...allPhotos]).slice(0, 24);
-      setPhotos(shuffledPhotos);
+    if (filter === "Toutes") {
+      setPhotos(allPhotos);
     } else {
-      setPhotos(allPhotos.filter((photo) => photo.Categorie === filter));
+      setPhotos(
+        allPhotos.filter((photo) => photo.Category === filter.toLowerCase())
+      );
     }
   }, [filter, allPhotos]);
 
-  // Shuffles an array using the Fisher-Yates algo
+  // Function to shuffle an array
   function shuffleArray(array) {
     let curId = array.length;
     while (0 !== curId) {
@@ -52,6 +77,7 @@ const GaleriePage = () => {
     return array;
   }
 
+  // Render the component
   return (
     <div className="bg-gray-200 min-h-screen pt-28">
       <div className="container mx-auto p-4">
@@ -69,6 +95,7 @@ const GaleriePage = () => {
             "Couple",
             "Portrait",
           ].map((cat) => (
+            // Button for each category
             <button
               key={cat}
               className={`mx-2 my-1 p-2 rounded ${
@@ -84,6 +111,7 @@ const GaleriePage = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {photos.map((photo, index) => (
+            // Display each photo
             <div
               key={index}
               className="p-6 bg-white bg-opacity-80 border rounded-md shadow-md hover:shadow-xl transition-shadow duration-300 max-w-md w-full relative group"

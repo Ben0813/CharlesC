@@ -9,17 +9,20 @@ const ContactPage = () => {
 
   // Initialize useForm hook with formspree
   const [state, handleSubmit] = useForm("mwkdlood");
+  // Initialize state for message and error
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
   // Update message and error state based on form submission status
   useEffect(() => {
     if (state?.errors?.length > 0) {
+      // Set error message and error state if there are any errors
       setMessage(
         "Une erreur s'est produite lors de l'envoi du formulaire. Veuillez réessayer."
       );
       setIsError(true);
     } else if (state?.succeeded) {
+      // Set success message and reset error state if form submission is successful
       setMessage(
         "Merci pour votre message ! Nous vous répondrons dans les plus brefs délais."
       );
